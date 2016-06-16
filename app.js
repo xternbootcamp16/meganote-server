@@ -1,8 +1,7 @@
 require('dotenv').load();
 var express = require('express');
-var db = require('mongoose');
+var db = require('./config/db');
 
-db.connect(process.env.DB_URI);
 var app = express();
 
 var noteSchema = db.Schema({
