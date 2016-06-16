@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/xternbootcamp16/meganote-server/issues"
   },
-  "homepage": "https://github.com/xternbootcamp16/meganote-server#readme"
+  "homepage": "https://github.com/xternbootcamp16/meganote-server#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
