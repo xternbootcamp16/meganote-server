@@ -5,7 +5,13 @@ var db = require('mongoose');
 db.connect(process.env.DB_URI);
 var app = express();
 
-var Note = db.model('Note', { title: String });
+var noteSchema = db.Schema({
+  title: String,
+  body_html: String,
+  body_text: String,
+  updated_at: { type: Date, default: Date.now }
+});
+var Note = db.model('Note', noteSchema);
 
 app.get('/', function(req, res) {
   Note
