@@ -4,6 +4,11 @@ var Note = require('./models/note');
 
 var app = express();
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 app.get('/', function(req, res) {
   Note
     .find()
