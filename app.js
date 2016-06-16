@@ -1,18 +1,18 @@
 require('dotenv').load();
 var express = require('express');
+var db = require('mongoose');
+
+db.connect(process.env.DB_URI);
 var app = express();
 
+var Note = db.model('Note', { title: String });
+
 app.get('/', function(req, res) {
-  res.json([
-    {
-      title: 'My hardcoded note.',
-      body_html: 'Wow.'
-    },
-    {
-      title: 'Another hardcoded note.',
-      body_html: 'Such JSON.'
-    }
-  ]);
+  Note
+    .find()
+    .then(function(notes) {
+      res.json(notes);
+    });
 });
 
 app.listen(3030, function() {
