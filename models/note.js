@@ -1,4 +1,5 @@
 var db = require('../config/db');
+var sanitizeHtml = require('sanitize-html');
 
 var noteSchema = db.Schema({
   title: String,
@@ -8,6 +9,7 @@ var noteSchema = db.Schema({
 });
 
 noteSchema.pre('save', function(next) {
+  this.body_html = sanitizeHtml(this.body_html);
   this.updated_at = Date.now();
   next();
 });
