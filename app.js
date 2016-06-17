@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 app.get('/', function(req, res) {
   Note
     .find()
+    .sort({ updated_at: 'desc' })
     .then(function(notes) {
       res.json(notes);
     });
