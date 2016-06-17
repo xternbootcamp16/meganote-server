@@ -28,6 +28,17 @@ app.get('/', function(req, res) {
     });
 });
 
+// READ one note
+app.get('/:id', function(req, res) {
+  Note
+    .findOne({
+      _id: req.params.id
+    })
+    .then(function(note) {
+      res.json(note);
+    });
+});
+
 // CREATE a note
 app.post('/', function(req, res) {
   var note = new Note({
