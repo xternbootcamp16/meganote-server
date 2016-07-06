@@ -73,15 +73,17 @@ app.put('/:id', function(req, res) {
         note.body_html = req.body.note.body_html;
         note
           .save()
-          .then(function() {
-            res.json({
-              message: 'Your changes have been saved.',
-              note: note
+          .then(
+            function() {
+              res.json({
+                message: 'Your changes have been saved.',
+                note: note
+              });
             },
             function(result) {
               res.json({ message: 'Aww, cuss!' });
-            });
-          });
+            }
+          );
       },
       function(result) {
         res.json({ message: 'Aww, cuss!' });
