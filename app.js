@@ -107,6 +107,12 @@ app.delete('/:id', function(req, res) {
     });
 });
 
+app.post('/users', (req, res) => {
+  res.json({
+    user: { msg: 'It worked!' }
+  });
+});
+
 app.listen(3030, function() {
   console.log('Listening on http://localhost:3030...');
 });
