@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/xternbootcamp16/meganote-server#readme",
   "dependencies": {
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.1",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
