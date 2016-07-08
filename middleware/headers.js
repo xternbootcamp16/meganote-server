@@ -10,4 +10,4 @@ module.exports = (req, res, next) => {
 
   // Continue processing the request.
   next();
-}
+};
