@@ -1,4 +1,5 @@
 var db = require('../config/db');
+var bcrypt = require('bcryptjs');
 
 var userSchema = db.Schema({
   name: {
@@ -30,6 +31,13 @@ userSchema.methods.toJSON = function() {
   delete user.passwordDigest;
   delete user.__v;
   return user;
+};
+
+userSchema.methods.authenticate = function(password, callback) {
+  console.log('comparing passwords');
+  bcrypt.compare(password, this.passwordDigest, function(err, isMatch) {
+    callback(isMatch);
+  });
 };
 
 var User = db.model('User', userSchema);
