@@ -5,11 +5,13 @@ var noteRoutes = require('./routes/note-routes');
 var userRoutes = require('./routes/user-routes');
 var sessionRoutes = require('./routes/session-routes');
 var headersMiddleware = require('./middleware/headers');
+var authMiddleware = require('./middleware/auth');
 
 var app = express();
 
 // Middleware
 app.use(headersMiddleware);
+app.use(authMiddleware);
 
 // Body parsing for JSON POST/PUT payloads
 app.use(bodyParser.json());
