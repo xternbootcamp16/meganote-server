@@ -22,9 +22,13 @@ router.post('/', function(req, res) {
     .save()
     .then(
       userData => {
-        var token = jwt.sign(userData._id, process.env.JWT_SECRET, {
-          expiresIn: 60*60*24
-        });
+        var token = jwt.sign(
+          { _id: userData._id }, 
+          process.env.JWT_SECRET,
+          {
+            expiresIn: 60*60*24
+          }
+        );
         res.json({
           user: userData,
           authToken: token
