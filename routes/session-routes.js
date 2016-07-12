@@ -21,9 +21,7 @@ router.post('/', (req, res) => {
               var token = jwt.sign(
                 { _id: user._id },
                 process.env.JWT_SECRET,
-                {
-                  expiresIn: 60*60*24
-                }
+                { expiresIn: 60*60*24 }
               );
               res.json({
                 user,
