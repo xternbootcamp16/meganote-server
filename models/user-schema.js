@@ -1,5 +1,6 @@
 var db = require('../config/db');
 var bcrypt = require('bcryptjs');
+var noteSchema = require('./note-schema');
 
 var userSchema = db.Schema({
   name: {
@@ -18,7 +19,8 @@ var userSchema = db.Schema({
   updated_at: {
     type: Date,
     default: Date.now
-  }
+  },
+  notes: [noteSchema],
 });
 
 userSchema.pre('save', function(next) {
