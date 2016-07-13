@@ -2,6 +2,7 @@ var router = require('express').Router();
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var User = require('../models/user');
+var errorHelper = require('../models/error-helper');
 
 // CREATE a user
 router.post('/', function(req, res) {
@@ -19,7 +20,11 @@ router.post('/', function(req, res) {
   });
 
   user
-    .save(err => res.status(422).json(err))
+    .save(err => {
+      res.status(422).json({
+        errors: errorHelper(err),
+      });
+    })
     .then(
       userData => {
         var token = jwt.sign(
