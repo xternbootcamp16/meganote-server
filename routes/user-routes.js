@@ -19,7 +19,7 @@ router.post('/', function(req, res) {
   });
 
   user
-    .save()
+    .save(err => res.status(422).json(err))
     .then(
       userData => {
         var token = jwt.sign(

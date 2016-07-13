@@ -1,4 +1,5 @@
 var bcrypt = require('bcryptjs');
+var beautifyUnique = require('mongoose-beautiful-unique-validation');
 var db = require('../config/db');
 var noteSchema = require('./note-schema');
 
@@ -22,6 +23,8 @@ var userSchema = db.Schema({
   },
   notes: [noteSchema],
 });
+
+userSchema.plugin(beautifyUnique);
 
 userSchema.pre('save', function(next) {
   this.updated_at = Date.now();
