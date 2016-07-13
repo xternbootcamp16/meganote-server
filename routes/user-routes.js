@@ -2,7 +2,7 @@ var router = require('express').Router();
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var User = require('../models/user');
-var errorHelper = require('../models/error-helper');
+var errorHelper = require('../helpers/error-helper');
 
 // CREATE a user
 router.post('/', function(req, res) {
