@@ -30,7 +30,7 @@ module.exports = (req, res, next) => {
         }
       );
   });
-}
+};
 
 function isPreflight(req) {
   return (req.method.toLowerCase() === 'options');

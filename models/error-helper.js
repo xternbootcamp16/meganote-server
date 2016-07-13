@@ -1,5 +1,5 @@
 module.exports = (err) => {
-  if (err.name !== 'ValidationError') { return err };
+  if (err.name !== 'ValidationError') { return err; }
 
   // The first %s is the value the user entered; the second is the field name.
   const messages = {
@@ -30,4 +30,4 @@ module.exports = (err) => {
   }
 
   return errors;
-}
+};

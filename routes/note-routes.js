@@ -22,7 +22,7 @@ router.post('/', function(req, res) {
   req.user
     .save()
     .then(
-      userData => {
+      _userData => {
         res.json({
           message: 'Successfully created note',
           note: note,

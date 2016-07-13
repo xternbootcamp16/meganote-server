@@ -75,9 +75,9 @@ router.put('/:id', (req, res) => {
 module.exports = router;
 
 function passwordsPresent(payload) {
-  return (payload.password && payload.passwordConfirmation)
+  return (payload.password && payload.passwordConfirmation);
 }
 
 function passwordsMatch(payload) {
-  return (payload.password === payload.passwordConfirmation)
+  return (payload.password === payload.passwordConfirmation);
 }

@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
         user
           .authenticate(req.body.user.password)
           .then(
-            (isMatch) => {
+            (_isMatch) => {
               // correct password
               var token = jwt.sign(
                 { _id: user._id },
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
               });
             },
 
-            (err) => {
+            (_err) => {
               res.status(401).json({ message });
             }
           );
