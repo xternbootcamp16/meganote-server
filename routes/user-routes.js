@@ -20,11 +20,7 @@ router.post('/', function(req, res) {
   });
 
   user
-    .save(err => {
-      res.status(422).json({
-        errors: errorHelper(err),
-      });
-    })
+    .save()
     .then(
       userData => {
         var token = jwt.sign(
@@ -35,6 +31,12 @@ router.post('/', function(req, res) {
         res.json({
           user: userData,
           authToken: token
+        });
+      },
+
+      err => {
+        res.status(422).json({
+          errors: errorHelper(err),
         });
       }
     );
