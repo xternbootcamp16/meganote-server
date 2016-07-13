@@ -8,7 +8,7 @@ var errorHelper = require('../models/error-helper');
 router.post('/', function(req, res) {
   if (!passwordsPresent(req.body.user) || !passwordsMatch(req.body.user)) {
     res.status(422).json({
-      message: 'Passwords must match!'
+      errors: ['Passwords must match!']
     });
     return;
   }
