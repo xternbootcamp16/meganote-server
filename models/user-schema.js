@@ -39,10 +39,11 @@ userSchema.methods.toJSON = function() {
 };
 
 userSchema.methods.authenticate = function(password) {
+  const user = this;
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, this.passwordDigest, (err, isMatch) => {
       if (isMatch) {
-        resolve(isMatch);
+        resolve(user);
       }
       else {
         reject(err);
