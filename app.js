@@ -1,4 +1,6 @@
-require('dotenv').load();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load();
+}
 var express = require('express');
 var bodyParser = require('body-parser');
 var noteRoutes = require('./routes/note-routes');
