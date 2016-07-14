@@ -21,14 +21,7 @@ router.post('/', function(req, res) {
 
   req.user
     .save()
-    .then(
-      _userData => {
-        res.json({
-          message: 'Successfully created note',
-          note: note,
-        });
-      }
-    );
+    .then(() => res.json(note));
 });
 
 // UPDATE a note
@@ -40,14 +33,7 @@ router.put('/:id', function(req, res) {
 
   req.user
     .save()
-    .then(
-      () => {
-        res.json({
-          message: 'Your changes have been saved.',
-          note: note
-        });
-      }
-    );
+    .then(() => res.json(note));
 });
 
 // DELETE a note
@@ -57,14 +43,7 @@ router.delete('/:id', function(req, res) {
 
   req.user
     .save()
-    .then(
-      () => {
-        res.json({
-          message: 'That note has been deleted.',
-          note: note
-        });
-      }
-    );
+    .then(() => res.json(note));
 });
 
 module.exports = router;
