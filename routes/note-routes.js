@@ -12,9 +12,12 @@ router.get('/:id', function(req, res) {
 
 // CREATE a note
 router.post('/', function(req, res) {
+  var payload;
+  if (req.body.note) { payload = req.body.note; }
+  else { payload = req.body; }
   var note = req.user.notes.create({
-    title: req.body.note.title,
-    body_html: req.body.note.body_html
+    title: payload.title,
+    body_html: payload.body_html
   });
 
   req.user.notes.push(note);
@@ -26,9 +29,13 @@ router.post('/', function(req, res) {
 
 // UPDATE a note
 router.put('/:id', function(req, res) {
+  var payload;
+  if (req.body.note) { payload = req.body.note; }
+  else { payload = req.body; }
+
   var note = req.user.notes.id(req.params.id);
-  note.title = req.body.note.title;
-  note.body_html = req.body.note.body_html;
+  note.title = payload.title;
+  note.body_html = payload.body_html;
   note.updated_at = Date.now();
 
   req.user
