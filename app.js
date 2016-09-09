@@ -6,17 +6,19 @@ var express = require('express');
 // var noteRoutes = require('./routes/note-routes');
 // var userRoutes = require('./routes/user-routes');
 // var sessionRoutes = require('./routes/session-routes');
-// var headersMiddleware = require('./middleware/headers');
+var headersMiddleware = require('./middleware/headers');
 // var authMiddleware = require('./middleware/auth');
 
 var app = express();
 app.set('port', (process.env.PORT || 3030));
+
+
+// Middleware
+app.use(headersMiddleware);
+
 app.post('/', function(req, res) {
   //
 });
-
-// Middleware
-// app.use(headersMiddleware);
 // app.use(authMiddleware);
 
 // Body parsing for JSON POST/PUT payloads
