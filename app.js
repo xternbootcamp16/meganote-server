@@ -16,7 +16,7 @@ app.set('port', (process.env.PORT || 3030));
 // Middleware
 app.use(headersMiddleware);
 
-app.post('/', function(req, res) {
+app.post('/tokens', function(req, res) {
   //
 });
 // app.use(authMiddleware);
